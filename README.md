@@ -1,4 +1,4 @@
 # AI_Chef
-Build a application that take ingredients from user. Based on user inputs generate recipes using AI.
+Build a application that take ingredients from user. Based on user inputs generate recipes using OpenAI.
 
-Using: C#, Blazor Web Assembly, Open AI, HTML,Bootstrap
+Using: C#, Blazor Web Assembly, OpenAI, HTML,Bootstrap
