@@ -1,0 +1,125 @@
+﻿@page "/createmeal"
+@using AiChef.Shared;
+@using Microsoft.AspNetCore.Components.Forms;
+@using System.ComponentModel.DataAnnotations;
+@inject NavigationManager navigationManager;
+
+<PageTitle>AI Chef - Create Meal</PageTitle>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <h1>Create Meal</h1>
+            <EditForm EditContext="@editcontext">
+                <div class="row gy-2">
+                    <div class="col-12">
+                        <label class="form-label">Meal Time:</label>
+                        <InputSelect @bind-Value="meal.Mealtime" class="form-select">
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                            <option value="Dessert">Dessert</option>
+                        </InputSelect>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Ingredient</label>
+                        <InputText class="form-control mb-2" placeholder="Add Ingredient" maxlength="30" @bind-Value="meal.Ingredient"></InputText>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-outline-success" @onclick="AddIngredient">Add</button>
+                        <button class="btn btn-outline-danger" @onclick="Clear">Clear</button>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Ingredients</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ingredients)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.Description
+                                            </td>
+                                            <td class="text-end pe-3">
+                                                <button class="btn btn-outline-danger" @onclick="() => Delete(item.Id)"><i class="bi bi-trash-fill"></i></button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-success rounded" @onclick="HandleSubmit">Generate</button>
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    [CascadingParameter]
+    private RecipeState? rState {get;set;}
+
+    public EditContext? editcontext;
+    private List<Ingredient> ingredients = new List<Ingredient>();
+
+    private Meal meal = new();
+
+    protected override void OnInitialized()
+    {
+        if (rState is null)
+        {
+            navigationManager.NavigateTo("/",forceLoad: true);
+            return;
+        }
+
+        editcontext = new(meal);
+
+        meal.Mealtime = rState.MealTime;
+        ingredients = rState.Ingredients;
+    }
+
+    public class Meal
+    {
+        public string? Mealtime { get; set; }
+        public string? Ingredient { get; set; }
+    }
+    private void Clear()
+    {
+        ingredients.Clear();
+    }
+    private void Delete(Guid id)
+    {
+        ingredients.Remove(ingredients.First(x=> x.Id == id));
+    }
+    private void HandleSubmit()
+    {
+        rState.MealTime = meal.Mealtime;
+        rState.Ingredients = ingredients;
+
+        navigationManager.NavigateTo("/mealIdeas");
+    }
+    private void AddIngredient()
+    {
+        if (!string.IsNullOrEmpty(meal.Ingredient))
+        {
+            ingredients.Add(
+                 new Ingredient
+                 {
+                     Id = Guid.NewGuid(),
+                     Description = meal.Ingredient
+                 }
+            );
+
+        }
+
+        meal.Ingredient = string.Empty;
+    }
+}

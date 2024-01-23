@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Client",
+    "\\Client\\Pages",
+    "\\Client\\Shared",
+    "\\Client\\wwwroot",
+    "\\Client\\wwwroot\\js",
+    "\\Shared"
+  ],
+  "SelectedNode": "\\Client\\Pages\\MealRecipe.razor",
+  "PreviewInSolutionExplorer": false
+}

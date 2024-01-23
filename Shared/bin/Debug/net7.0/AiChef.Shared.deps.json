@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "AiChef.Shared/1.0.0": {
+        "runtime": {
+          "AiChef.Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AiChef.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.recipeImage[b-mqjrlasd90]{
+    height:300px;
+    width:300px;
+}
+@media(min-width:992){
+    .recipeImage[b-mqjrlasd90]{
+        height:450px;
+        width:450px;
+    }
+}

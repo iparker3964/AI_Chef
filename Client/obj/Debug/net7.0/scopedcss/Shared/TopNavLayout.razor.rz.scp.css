@@ -1,0 +1,7 @@
+main[b-erlkn18ygf]{
+    flex:1 0 auto;
+}
+footer[b-erlkn18ygf]{
+    flex-shrink:0;
+    background-color: var(--bs-success-bg-subtle);
+}
