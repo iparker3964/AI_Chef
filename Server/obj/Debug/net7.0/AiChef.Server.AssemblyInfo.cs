@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AiChef.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+016b6d149338cc7deb52b5b2a026cc2d0cdb781d")]
 [assembly: System.Reflection.AssemblyProductAttribute("AiChef.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AiChef.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
